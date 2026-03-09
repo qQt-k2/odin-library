@@ -1,0 +1,70 @@
+.hidden {
+  visibility: hidden;
+}
+
+.create-UI {
+  position: relative;
+}
+
+.create__container {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0, 0.5);
+
+  display: grid;
+  place-items: center;
+}
+
+.create__input--holder {
+  padding: 2vh 4vw;
+  width: clamp(350px, 20vw, 750px);
+  background: var(--grey-color);
+  border: 5px solid var(--light-color);
+  border-radius: 25px;
+
+  display: grid; 
+  gap: 10px;
+}
+
+.create-ui__button,
+.close-ui__button {
+  color: var(--light-color);
+  font-size: 1.25rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  transition: background 0.15s ease;
+}
+
+.create-ui__button {
+  margin-top: 25px;
+  background: var(--green-color);
+}
+
+.close-ui__button {
+  background: var(--red-color);
+}
+
+.create-ui__button:hover {
+  background: var(--green-color-transparent);
+}
+
+.close-ui__button:hover {
+  background: var(--red-color-transparent);
+}
+
+.create__input {
+  display: flex;
+  flex-direction: column;
+  
+  label {
+    font-size: 1.15rem;
+    font-weight: 500;
+  }
+
+  input {
+    padding: 0 10px;
+    border: none;
+    border-radius: 10px;
+  }
+}

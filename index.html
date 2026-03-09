@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Library</title>
+  <link rel="shortcut icon" href="./imgs/books.png" type="image/x-icon">
+  <link rel="stylesheet" href="./style/reset.css">
+  <link rel="stylesheet" href="./style/style.css">
+  <link rel="stylesheet" href="./style/library.css">
+  <link rel="stylesheet" href="./style/create-ui.css">
+  <script src="./script/book.js" defer></script>
+  <script src="./script/library-functions.js" defer></script>
+  <script src="./script/library-buttons.js" defer></script>
+</head>
+
+<body>
+  <header>
+    <nav class="nav__bar">
+      <div>Created by
+          <a href="#">
+            qQt-k2
+          </a>
+      </div>
+      <h1>&#10063; Library</h1>
+      <button class="add-button" id="add-button" type="button">Add</button>
+    </nav>
+  </header>
+  <div id="create-ui" class="create-UI hidden">
+    <div class="create__container">
+      <div class="create__input--holder">
+        <div class="create__input">
+          <label for="create-title">Title: </label>
+          <input maxlength="20" type="text" id="create-title" name="create-title">
+        </div>
+        <div class="create__input">
+          <label for="create-author">Author: </label>
+          <input maxlength="35" type="text" id="create-author" name="create-author">
+        </div>
+        <div class="create__input">
+          <label for="create-pages">Pages: </label>
+          <input max="10000" maxlength="5" type="tel" id="create-pages" name="create-pages">
+        </div>
+        <div class="create__input">
+          <label for="create-status">Read Status: </label>
+          <input maxlength="35" type="text" id="create-status" name="create-status">
+        </div>
+        <button class="create-ui__button" id="create-button">Create</button>
+        <button class="close-ui__button" id="close-button">Close</button>
+      </div>
+    </div>
+  </div>
+  <main>
+    <div class="library--holder" id="library-holder">
+    </div>
+  </main>
+</body>
+
+</html>
