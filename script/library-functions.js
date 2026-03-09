@@ -31,7 +31,7 @@ function displayLibrary() {
     
     const cardReadStatus= document.createElement("div"); 
     cardReadStatus.classList.add("card__read-status"); 
-    cardReadStatus.textContent = `Status: ${book.isRead || "None"}`;
+    cardReadStatus.textContent = `Status: ${book.readStatus || "None"}`;
 
     const cardRemove = document.createElement("button"); 
     cardRemove.classList.add("card__button"); 
