@@ -1,56 +1,58 @@
-const libraryHolder = [];
-const libraryBlock = document.getElementById("library-holder");
-const createUIBlock = document.getElementById("create-ui");
+import { Book } from "./book.js";
 
-function addBook(title, author, pagesCount, readStatus) {
-  libraryHolder.push(new Book(title, author, pagesCount, readStatus));
-}
+export class LibraryUtils {
+  static libraryHolder = [];
 
-function displayAddUI() {
-  createUIBlock.classList.toggle("hidden");
-}
+  static addBook(title, author, pagesCount, readStatus) {
+    this.libraryHolder.push(new Book(title, author, pagesCount, readStatus));
+  }
 
-function displayLibrary() {
-  libraryBlock.replaceChildren();
+  static displayAddUI(createUIBlock) {
+    createUIBlock.classList.toggle("hidden");
+  }
 
-  for(const book of libraryHolder) {
-    const libraryCard = document.createElement("div"); 
-    libraryCard.classList.add("library__card");
+  static displayLibrary(libraryBlock) {
+    libraryBlock.replaceChildren();
 
-    const cardTitle = document.createElement("div");
-    cardTitle.classList.add("card__title"); 
-    cardTitle.textContent = `${book.title || "None"}`;
-    
-    const cardAuthor = document.createElement("div"); 
-    cardAuthor.classList.add("card__author"); 
-    cardAuthor.textContent = `Author: ${book.author || "None"}`;
-    
-    const cardPagesCount = document.createElement("div"); 
-    cardPagesCount.classList.add("card__pages-count"); 
-    cardPagesCount.textContent = `Pages: ${book.pagesCount || "0"}`;
-    
-    const cardReadStatus= document.createElement("div"); 
-    cardReadStatus.classList.add("card__read-status"); 
-    cardReadStatus.textContent = `Status: ${book.readStatus || "None"}`;
+    for (const book of this.libraryHolder) {
+      const libraryCard = document.createElement("div");
+      libraryCard.classList.add("library__card");
 
-    const cardRemove = document.createElement("button"); 
-    cardRemove.classList.add("card__button"); 
-    cardRemove.textContent = `Remove`;
-    cardRemove.addEventListener("click", () => {
-      for(const existingBook of libraryHolder) {
-        if(existingBook.id === book.id) {
-          libraryHolder.splice(libraryHolder.indexOf(existingBook), 1);
-          displayLibrary();
+      const cardTitle = document.createElement("div");
+      cardTitle.classList.add("card__title");
+      cardTitle.textContent = `${book.title || "None"}`;
+
+      const cardAuthor = document.createElement("div");
+      cardAuthor.classList.add("card__author");
+      cardAuthor.textContent = `Author: ${book.author || "None"}`;
+
+      const cardPagesCount = document.createElement("div");
+      cardPagesCount.classList.add("card__pages-count");
+      cardPagesCount.textContent = `Pages: ${book.pagesCount || "0"}`;
+
+      const cardReadStatus = document.createElement("div");
+      cardReadStatus.classList.add("card__read-status");
+      cardReadStatus.textContent = `Status: ${book.readStatus || "None"}`;
+
+      const cardRemove = document.createElement("button");
+      cardRemove.classList.add("card__button");
+      cardRemove.textContent = `Remove`;
+      cardRemove.addEventListener("click", () => {
+        for (const existingBook of this.libraryHolder) {
+          if (existingBook.id === book.id) {
+            this.libraryHolder.splice(this.libraryHolder.indexOf(existingBook), 1);
+            this.displayLibrary(libraryBlock);
+          }
         }
-      }
-    });
+      });
 
-    libraryCard.appendChild(cardTitle);
-    libraryCard.appendChild(cardAuthor);
-    libraryCard.appendChild(cardPagesCount);
-    libraryCard.appendChild(cardReadStatus);
-    libraryCard.appendChild(cardRemove);
+      libraryCard.appendChild(cardTitle);
+      libraryCard.appendChild(cardAuthor);
+      libraryCard.appendChild(cardPagesCount);
+      libraryCard.appendChild(cardReadStatus);
+      libraryCard.appendChild(cardRemove);
 
-    libraryBlock.appendChild(libraryCard);
+      libraryBlock.appendChild(libraryCard);
+    }
   }
 }
